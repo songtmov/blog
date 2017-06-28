@@ -84,4 +84,22 @@ return array (
       '@mdm/admin' => $vendorDir . '/mdmsoft/yii2-admin',
     ),
   ),
+  'yiisoft/yii2-httpclient' => 
+  array (
+    'name' => 'yiisoft/yii2-httpclient',
+    'version' => '2.0.4.0',
+    'alias' => 
+    array (
+      '@yii/httpclient' => $vendorDir . '/yiisoft/yii2-httpclient',
+    ),
+  ),
+  'zhuravljov/yii2-rest' => 
+  array (
+    'name' => 'zhuravljov/yii2-rest',
+    'version' => '1.0.3.0',
+    'alias' => 
+    array (
+      '@zhuravljov/yii/rest' => $vendorDir . '/zhuravljov/yii2-rest/src',
+    ),
+  ),
 );
