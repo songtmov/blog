@@ -17,9 +17,9 @@ return [
         'allowActions' => [
             //允许访问的action
             //controller/action
-            // 'site/logout',
+            'site/index'
             // 'site/captcha',
-            '*'
+            // '*'
         ]
     ],
     "modules" => [
