@@ -1,5 +1,8 @@
 yii2 - adminlte - 管理模版
 
+
+保险起见 先执行 ～～ composer global require "fxp/composer-asset-plugin"
+
 ==================
 
 1，项目目录下，执行init
