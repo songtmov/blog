@@ -16,3 +16,5 @@ yii2 - adminlte - 管理模版
 5，执行blog_20170628_182510.sql文件到你的数据库中
 
 6，web目录查看效果
+
+账号 admin 密码 adminadmin
