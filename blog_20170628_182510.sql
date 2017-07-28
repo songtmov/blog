@@ -11,73 +11,6 @@
 -- ---------------------------------------------------------
 
 
--- CREATE TABLE "menu" -------------------------------------
--- DROP TABLE "menu" -------------------------------------------
-DROP TABLE IF EXISTS `menu` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "menu" -----------------------------------------
-CREATE TABLE `menu` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`name` VarChar( 128 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`parent` Int( 11 ) NULL,
-	`route` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-	`order` Int( 11 ) NULL,
-	`data` Blob NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = utf8
-COLLATE = utf8_general_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
--- ---------------------------------------------------------
-
-
--- CREATE TABLE "migration" --------------------------------
--- DROP TABLE "migration" --------------------------------------
-DROP TABLE IF EXISTS `migration` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "migration" ------------------------------------
-CREATE TABLE `migration` ( 
-	`version` VarChar( 180 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`apply_time` Int( 11 ) NULL,
-	PRIMARY KEY ( `version` ) )
-CHARACTER SET = utf8
-COLLATE = utf8_general_ci
-ENGINE = InnoDB;
--- -------------------------------------------------------------
--- ---------------------------------------------------------
-
-
--- CREATE TABLE "user" -------------------------------------
--- DROP TABLE "user" -------------------------------------------
-DROP TABLE IF EXISTS `user` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "user" -----------------------------------------
-CREATE TABLE `user` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`username` VarChar( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`auth_key` VarChar( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`password_hash` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`password_reset_token` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
-	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`status` Smallint( 6 ) NOT NULL DEFAULT '10',
-	`created_at` Int( 11 ) NOT NULL,
-	`updated_at` Int( 11 ) NOT NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = utf8
-COLLATE = utf8_unicode_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 2;
--- -------------------------------------------------------------
--- ---------------------------------------------------------
-
-
 -- CREATE TABLE "auth_assignment" --------------------------
 -- DROP TABLE "auth_assignment" --------------------------------
 DROP TABLE IF EXISTS `auth_assignment` CASCADE;
@@ -158,22 +91,70 @@ ENGINE = InnoDB;
 -- ---------------------------------------------------------
 
 
--- Dump data of "menu" -------------------------------------
-INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '1', '菜单管理', NULL, '/admin/menu/index', NULL, NULL );
-INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '2', '权限管理', NULL, '/admin/route/index', NULL, NULL );
+-- CREATE TABLE "menu" -------------------------------------
+-- DROP TABLE "menu" -------------------------------------------
+DROP TABLE IF EXISTS `menu` CASCADE;
+-- -------------------------------------------------------------
+
+
+-- CREATE TABLE "menu" -----------------------------------------
+CREATE TABLE `menu` ( 
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`name` VarChar( 128 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`parent` Int( 11 ) NULL,
+	`route` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+	`order` Int( 11 ) NULL,
+	`data` Blob NULL,
+	PRIMARY KEY ( `id` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 3;
+-- -------------------------------------------------------------
 -- ---------------------------------------------------------
 
 
--- Dump data of "migration" --------------------------------
-INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm000000_000000_base', '1498643511' );
-INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm140506_102106_rbac_init', '1498643567' );
-INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm140602_111327_create_menu_table', '1498643513' );
-INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm160312_050000_create_user', '1498643514' );
+-- CREATE TABLE "migration" --------------------------------
+-- DROP TABLE "migration" --------------------------------------
+DROP TABLE IF EXISTS `migration` CASCADE;
+-- -------------------------------------------------------------
+
+
+-- CREATE TABLE "migration" ------------------------------------
+CREATE TABLE `migration` ( 
+	`version` VarChar( 180 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`apply_time` Int( 11 ) NULL,
+	PRIMARY KEY ( `version` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB;
+-- -------------------------------------------------------------
 -- ---------------------------------------------------------
 
 
--- Dump data of "user" -------------------------------------
-INSERT INTO `user`(`id`,`username`,`auth_key`,`password_hash`,`password_reset_token`,`email`,`status`,`created_at`,`updated_at`) VALUES ( '1', 'admin', 'VbzGocdnSamkBxkOt8yCAsAxDmflLz81', '$2y$13$5TM6CR2ihL7is2CPxQ39kuNW2bL.STTY8fCcnQ0MmiE1pmS6NUdDK', NULL, 'song8328787@163.com', '10', '1498643604', '1498643604' );
+-- CREATE TABLE "user" -------------------------------------
+-- DROP TABLE "user" -------------------------------------------
+DROP TABLE IF EXISTS `user` CASCADE;
+-- -------------------------------------------------------------
+
+
+-- CREATE TABLE "user" -----------------------------------------
+CREATE TABLE `user` ( 
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`username` VarChar( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`auth_key` VarChar( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`password_hash` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`password_reset_token` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
+	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`status` Smallint( 6 ) NOT NULL DEFAULT '10',
+	`created_at` Int( 11 ) NOT NULL,
+	`updated_at` Int( 11 ) NOT NULL,
+	PRIMARY KEY ( `id` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 2;
+-- -------------------------------------------------------------
 -- ---------------------------------------------------------
 
 
@@ -264,11 +245,37 @@ INSERT INTO `auth_item`(`name`,`type`,`description`,`rule_name`,`data`,`created_
 INSERT INTO `auth_item_child`(`parent`,`child`) VALUES ( 'admin', '/*' );
 -- ---------------------------------------------------------
 
+
+-- Dump data of "auth_rule" --------------------------------
+-- ---------------------------------------------------------
+
+
+-- Dump data of "menu" -------------------------------------
+INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '1', '菜单管理', NULL, '/admin/menu/index', NULL, NULL );
+INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '2', '权限管理', NULL, '/admin/route/index', NULL, NULL );
+INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '3', '角色列表', '2', '/admin/role/index', NULL, NULL );
+INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '4', '路由列表', '2', '/admin/route/index', NULL, NULL );
+INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '5', '权限列表', '2', '/admin/permission/index', NULL, NULL );
+INSERT INTO `menu`(`id`,`name`,`parent`,`route`,`order`,`data`) VALUES ( '6', '权限分配', '2', '/admin/assignment/index', NULL, NULL );
+-- ---------------------------------------------------------
+
+
+-- Dump data of "migration" --------------------------------
+INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm000000_000000_base', '1498643511' );
+INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm140506_102106_rbac_init', '1498643567' );
+INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm140602_111327_create_menu_table', '1498643513' );
+INSERT INTO `migration`(`version`,`apply_time`) VALUES ( 'm160312_050000_create_user', '1498643514' );
+-- ---------------------------------------------------------
+
+
+-- Dump data of "user" -------------------------------------
+INSERT INTO `user`(`id`,`username`,`auth_key`,`password_hash`,`password_reset_token`,`email`,`status`,`created_at`,`updated_at`) VALUES ( '1', 'admin', 'VbzGocdnSamkBxkOt8yCAsAxDmflLz81', '$2y$13$5TM6CR2ihL7is2CPxQ39kuNW2bL.STTY8fCcnQ0MmiE1pmS6NUdDK', NULL, 'song8328787@163.com', '10', '1498643604', '1498643604' );
+-- ---------------------------------------------------------
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 -- ---------------------------------------------------------
-
-
